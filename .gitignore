@@ -1,2 +1,2 @@
-terraform/
-build.sh
+terraform/.terraform/
+
