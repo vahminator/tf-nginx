@@ -45,7 +45,9 @@ resource "aws_instance" "aws_ubuntu" {
   instance_type          = "t2.micro"
   ami                    = "ami-04e601abe3e1a910f"
   key_name               = var.key_name
-  user_data              = file("userdata.tpl")
+  vpc_security_group_ids = [
+    "${aws_security_group.bitmedia_sg.id}"
+  ]
 }  
 
 
@@ -88,3 +90,4 @@ resource "aws_security_group" "bitmedia_sg" {
 output "aws_instance_public_dns" {
   value = aws_instance.aws_ubuntu.public_dns
 }
+
